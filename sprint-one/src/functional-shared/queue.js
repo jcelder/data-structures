@@ -12,8 +12,29 @@ var Queue = function() {
 
 var queueMethods = {};
 
-queueMethods.enqueue = function() {};
-queueMethods.dequeue = function() {};
+queueMethods.enqueue = function(value) {
+  if (this.currentSize === 0) {
+    this.storage[this.currentHead] = value;
+    this.currentSize++;
+  } else if (this.currentHead > this.currentSize) {
+    this.storage[this.currentHead + this.currentSize] = value;
+    this.currentSize++;
+  } else {
+    this.currentSize++;
+    this.storage[this.currentSize] = value;
+  }
+};
+queueMethods.dequeue = function() {
+  if (this.currentSize === 0) {
+    this.currentHead = 1;
+    return this.currentSize;
+  }
+  var dequeuedValue = this.storage[this.currentHead];
+  delete this.storage[this.currentHead];
+  this.currentHead++;
+  this.currentSize--;
+  return dequeuedValue;
+};
 queueMethods.size = function() {
   return this.currentSize;
 };
