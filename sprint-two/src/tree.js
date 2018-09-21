@@ -17,19 +17,26 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(target) {
-  debugger;
-  if (this.value === target) {
-    return true;
-  } else if (this.value !== target) {
-    for (var i = 0; i < this.children.length; i++) {
-      return this.children[i].contains(target);
+  var exists = false;
+
+  var traverseNodes = function(node) {
+    
+    if (node.value === target) {
+      exists = true;
+    } else if (node.children.length > 0) {
+      _.each(node.children, function(child) {
+        return traverseNodes(child);
+      });
     }
-  }
-  return false; 
+  };
+
+  traverseNodes(this);
+  return exists;
 };
-
-
 
 /*
  * Complexity: What is the time complexity of the above functions?
  */
+
+//  addChild is O(n) if you dont have the node you want to add the child to, otherwise its O(1)
+// contains is once again O(n) because the worst case scenario is you will have to traverse through the entire tree
