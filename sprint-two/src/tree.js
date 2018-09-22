@@ -36,6 +36,14 @@ treeMethods.contains = function(target) {
   return exists;
 };
 
+treeMethods.removeFromParent = function() {
+  this.parent.children = _.filter(this.parent.children, function(child) {
+    console.log(this)
+    return child !== this
+  }, this)
+  this.parent = null;
+}
+
 /*
  * Complexity: What is the time complexity of the above functions?
  */
