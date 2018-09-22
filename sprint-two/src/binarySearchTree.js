@@ -38,7 +38,6 @@ BinarySearchTree.prototype.contains = function (value) {
 };
 
 BinarySearchTree.prototype.depthFirstLog = function (cb) {
-  debugger;
   var depthFirstRecursion = function(node, parentNode) {
     cb(node.value);
     if (node.left) {
