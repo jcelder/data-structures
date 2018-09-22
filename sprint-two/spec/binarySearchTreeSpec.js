@@ -20,6 +20,10 @@ describe('binarySearchTree', function() {
     expect(binarySearchTree.right.left.value).to.equal(6);
   });
 
+  it('should fail to insert if no value is passed', function() {
+    expect(binarySearchTree.insert()).to.equal('Invalid arguments: Must pass a value')
+  });
+
   it('should have a working "contains" method', function() {
     binarySearchTree.insert(2);
     binarySearchTree.insert(3);
