@@ -8,7 +8,6 @@ var HashTable = function() {
 };
 
 HashTable.prototype.insert = function(k, v) {
-  debugger;
   var index = getIndexBelowMaxForKey(k, this._limit);
   var bucket = this._storage.get(index);
   var keyIndex = -1;
@@ -29,7 +28,6 @@ HashTable.prototype.insert = function(k, v) {
 };
 
 HashTable.prototype.retrieve = function(k) {
-  debugger;
   var index = getIndexBelowMaxForKey(k, this._limit);
   var retrievedBucket = this._storage.get(index);
   for (var i = 0; i < retrievedBucket.length; i++) {
