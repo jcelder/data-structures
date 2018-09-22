@@ -20,6 +20,11 @@ describe('graph', function() {
     expect(graph.contains(1)).to.equal(true);
   });
 
+  it('should not insert nodes if no value argument is passed', function() {
+    graph.addNode()
+    expect(graph.storage).to.eql([])
+  })
+
   it('should remove nodes that were inserted', function() {
     graph.addNode(2);
     expect(graph.contains(2)).to.equal(true);
