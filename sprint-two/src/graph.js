@@ -12,7 +12,6 @@ Graph.prototype.addNode = function(node) {
 
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
 Graph.prototype.contains = function(node) {
-  // debugger;
   for (var i = 0; i < this.storage.length; i++) {
     if (this.storage[i][0] === node) {
       return true;
@@ -25,7 +24,6 @@ Graph.prototype.contains = function(node) {
 Graph.prototype.removeNode = function(node) {
   var nodeToRemove; //[1, [2, 3]]
   this.storage = _.filter(this.storage, (elem) => {
-    // return elem[0] !== node;
     if (elem[0] === node) {
       nodeToRemove = elem;
       return false;
@@ -82,7 +80,6 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
 
 // Pass in a callback which will be executed on each node of the graph.
 Graph.prototype.forEachNode = function(cb) {
-  debugger;
   for (var i = 0; i < this.storage.length; i++) {
     cb(this.storage[i][0]);
   }
