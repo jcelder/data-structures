@@ -5,18 +5,22 @@ var BinarySearchTree = function(value) {
 };
 
 BinarySearchTree.prototype.insert = function (value) {
-  if (value < this.value) {
-    if (this.left === undefined) {
-      this.left = new BinarySearchTree(value);
-    } else {
-      this.left.insert(value);
+  if (!value) {
+    return 'Invalid arguments: Must pass a value'
+  } else {
+    if (value < this.value) {
+      if (this.left === undefined) {
+        this.left = new BinarySearchTree(value);
+      } else {
+        this.left.insert(value);
+      }
+    } else if (value > this.value) {
+      if (this.right === undefined) {
+        this.right = new BinarySearchTree(value);
+      } else {
+        this.right.insert(value);
+      }    
     }
-  } else if (value > this.value) {
-    if (this.right === undefined) {
-      this.right = new BinarySearchTree(value);
-    } else {
-      this.right.insert(value);
-    }    
   }
 };
 
