@@ -13,6 +13,23 @@ var LinkedList = function() {
     list.tail = newNode;
   };
 
+  list.insert  = function (nodeValue, insertAfter) {
+    var newNode = Node(nodeValue);
+    var previousNode;
+    var traverseList = function (node) {
+      if (node.value === insertAfter) {
+        previousNode = node;
+      } else if (node.next) {
+        traverseList(node.next); 
+      } else {
+        previousNode = 'not found';
+      }
+    }
+    traverseList(this.head);
+    newNode.next = previousNode.next;
+    previousNode.next = newNode;
+  }
+
   list.removeHead = function() {
     if (list.head !== null) {
       var removedHead = list.head;
